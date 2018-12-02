@@ -1,5 +1,6 @@
 package pl.javacoding.controller;
 
+import org.springframework.web.bind.annotation.*;
 import pl.javacoding.entity.Entry;
 import pl.javacoding.entity.Topic;
 import pl.javacoding.service.EntryService;
@@ -8,10 +9,6 @@ import pl.javacoding.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 import java.sql.Timestamp;

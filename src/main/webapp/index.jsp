@@ -1,1 +1,1 @@
-<% response.sendRedirect("/index"); %>
+index
