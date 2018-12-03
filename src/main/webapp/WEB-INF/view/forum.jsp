@@ -67,7 +67,7 @@
                 class="navbar-toggler-icon"></span></button>
     </div>
 </div>
-<div class="text-center bg-dark py-2">
+<div class="text-center bg-dark py-3">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-0">

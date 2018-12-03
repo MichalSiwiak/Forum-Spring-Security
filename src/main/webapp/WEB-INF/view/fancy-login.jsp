@@ -2,6 +2,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 
 <head>
@@ -27,7 +28,7 @@
 </head>
 
 <body>
-<div class="collapse bg-dark" id="navbarHeader">
+<div class="collapse" id="navbarHeader">
     <div class="container">
         <div class="row">
             <div class="col-md-7 py-4">
@@ -50,7 +51,8 @@
         </div>
     </div>
 </div>
-<div class="navbar navbar-dark bg-dark">
+<div class="navbar border-info navbar-dark bg-primary"
+     style="	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;	box-shadow: 0px 0px 4px  black;">
     <div class="container d-flex justify-content-between">
         <a href="#" class="navbar-brand d-flex align-items-center"><i class="icon-home"></i><strong>Home</strong> </a>
         <a href="#" class="navbar-brand d-flex align-items-center"><i class="icon-github-circled"></i><strong>Source
@@ -65,9 +67,9 @@
                 class="navbar-toggler-icon"></span></button>
     </div>
 </div>
-<div class="text-center py-0">
+<div class="text-center bg-dark py-3">
     <div class="container">
-        <div class="row my-3 justify-content-center">
+        <div class="row justify-content-center">
             <div class="col-md-0">
                 <h1 class="text-left">Forum Spring Security</h1>
                 <p class="lead text-left">Free open source projects present different java solutions using spring,
@@ -76,7 +78,7 @@
         </div>
     </div>
 </div>
-<div class="bg-light py-4 text-info" style="	text-shadow: 0px 0px 4px black;	box-shadow: 0px 0px 4px  black;">
+<div class="py-4 text-info" style="	text-shadow: 0px 0px 4px black;	box-shadow: 0px 0px 4px  black;">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -112,13 +114,6 @@
         </div>
     </div>
 </div>
-<div class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12"></div>
-        </div>
-    </div>
-</div>
 <footer class="text-muted py-5">
     <div class="container">
         <p class="float-right">
@@ -129,10 +124,5 @@
         </p>
     </div>
 </footer>
-<pingendo onclick="window.open('https://pingendo.com/', '_blank')"
-          style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">
-    Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block"
-                                            alt="Pingendo logo" height="16"></pingendo>
 </body>
-
 </html>

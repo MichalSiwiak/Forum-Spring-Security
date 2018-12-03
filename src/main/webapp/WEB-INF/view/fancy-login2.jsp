@@ -2,7 +2,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 
 <head>
@@ -28,7 +27,7 @@
 </head>
 
 <body>
-<div class="collapse" id="navbarHeader">
+<div class="collapse bg-dark" id="navbarHeader">
     <div class="container">
         <div class="row">
             <div class="col-md-7 py-4">
@@ -51,8 +50,7 @@
         </div>
     </div>
 </div>
-<div class="navbar border-info navbar-dark bg-primary"
-     style="	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;	box-shadow: 0px 0px 4px  black;">
+<div class="navbar navbar-dark bg-dark">
     <div class="container d-flex justify-content-between">
         <a href="#" class="navbar-brand d-flex align-items-center"><i class="icon-home"></i><strong>Home</strong> </a>
         <a href="#" class="navbar-brand d-flex align-items-center"><i class="icon-github-circled"></i><strong>Source
@@ -67,9 +65,9 @@
                 class="navbar-toggler-icon"></span></button>
     </div>
 </div>
-<div class="text-center bg-dark py-3">
+<div class="text-center py-0">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row my-3 justify-content-center">
             <div class="col-md-0">
                 <h1 class="text-left">Forum Spring Security</h1>
                 <p class="lead text-left">Free open source projects present different java solutions using spring,
@@ -78,16 +76,47 @@
         </div>
     </div>
 </div>
-<div class="row my-4">
-    <div class="container p-0">
-        <form:form modelAttribute="topic" method="POST">
-            <form:hidden path="id"/>
-            <p>Wprowadź tytuł tematu:</p>
-            <form:input path="title" type="text" name="tytul" id="tytul" maxlength="255"/>
-            <p>Wprowadź treść tematu:</p>
-            <form:textarea path="content" name="tresc" id="tresc" rows="9" cols="40"/>
-            <br/> <input type="submit" value="Dodaj"/>
-        </form:form>
+<div class="bg-light py-4 text-info" style="	text-shadow: 0px 0px 4px black;	box-shadow: 0px 0px 4px  black;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4 col-xs-offset-1 col-xs-10 text-center w-100">
+                        <form action="${pageContext.request.contextPath}/authenticateTheUser" method="POST">
+                            <!-- Check for logout -->
+                            <c:if test="${param.logout != null}">
+                                <h6 class="text-info mb-2 mt-2">You have been logged out</h6>
+                            </c:if>
+                            <div class="form-group text-center"><label class="w-100 text-center">Sign In</label> <input
+                                    type="text" name="username" placeholder="username"
+                                    class="form-control text-center w-75 d-inline-flex"
+                                    placeholder="Enter email"></div>
+                            <div class="form-group"><input type="password" name="password" placeholder="password"
+                                                           class="form-control text-center d-inline-flex w-75"
+                                                           placeholder="Password">
+                                <c:if test="${param.error != null}">
+                                    <h6 class="text-danger mb-2 mt-2">Invalid username and password</h6>
+                                </c:if>
+                            </div>
+                            <button type="submit" class="btn mb-2 btn-success w-75 btn-lg">Login</button>
+                            <a href="${pageContext.request.contextPath}/register/showRegistrationForm"
+                               class="btn mb-2 w-75 text-center btn-info btn-lg" role="button" aria-pressed="true">Register
+                                New User</a>
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                        </form>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12"></div>
+        </div>
     </div>
 </div>
 <footer class="text-muted py-5">
@@ -100,5 +129,10 @@
         </p>
     </div>
 </footer>
+<pingendo onclick="window.open('https://pingendo.com/', '_blank')"
+          style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">
+    Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block"
+                                            alt="Pingendo logo" height="16"></pingendo>
 </body>
+
 </html>
