@@ -89,9 +89,10 @@
                                 <h6 class="text-info mb-2 mt-2">You have been logged out</h6>
                             </c:if>
                             <div class="form-group text-center"><label class="w-100 text-center">Sign In</label> <input
-                                    type="text" class="form-control text-center w-75 d-inline-flex"
+                                    type="text" name="username" placeholder="username"
+                                    class="form-control text-center w-75 d-inline-flex"
                                     placeholder="Enter email"></div>
-                            <div class="form-group"><input type="password"
+                            <div class="form-group"><input type="password" name="password" placeholder="password"
                                                            class="form-control text-center d-inline-flex w-75"
                                                            placeholder="Password">
                                 <c:if test="${param.error != null}">
