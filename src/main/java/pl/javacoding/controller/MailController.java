@@ -43,14 +43,14 @@ public class MailController {
             message.setSubject(mail.getSubject());
             message.setText(mail.getContent());
             System.out.println(mail.toString());
-            emailSender.send(message);
-            model.addAttribute("ok","cokolwiek");
+            //emailSender.send(message);
+            model.addAttribute("ok");
 
 
         } catch (Exception e) {
 
         }
 
-        return "contact-form";
+        return "redirect:/contact";
     }
 }

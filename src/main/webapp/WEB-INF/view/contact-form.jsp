@@ -90,9 +90,14 @@
                                style="margin-top: 0px; margin-bottom: 0px; height: 202px;"/></fieldset>
             <button type="submit" class="btn btn-outline-primary">Submit</button>
         </form:form>
-        <c:if test="${param.sent != null}">
-            <h6 class="text-info mb-2 mt-2">You have been logged out</h6>
-        </c:if>
+
+        <div>
+            ${ok}
+            <c:if test="${param.ok != null}">
+                <h6 class="text-info mb-2 mt-2">You have been logged out</h6>
+            </c:if>
+        </div>
+
     </div>
 </div>
 <pingendo onclick="window.open('https://pingendo.com/', '_blank')"
