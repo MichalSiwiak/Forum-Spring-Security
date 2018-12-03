@@ -1,5 +1,6 @@
 package pl.javacoding.controller;
 
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 import pl.javacoding.entity.Entry;
 import pl.javacoding.entity.Topic;
@@ -24,6 +25,9 @@ public class ForumController {
     private UsersService usersService;
     @Autowired
     private EntryService entryService;
+
+    @Autowired
+    public JavaMailSender emailSender;
 
     @GetMapping("/index")
     public String listTopics(Model theModel) {
