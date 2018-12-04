@@ -82,8 +82,8 @@
     <div class="container p-0">
 
         <h1>Credit</h1>
-        <table class="table table-striped">
-            <tbody>
+        <table class="table table-striped table-hover">
+            <tbody data-link="row" class="rowlink">
             <tr>
                 <th>number</th>
                 <th>amount of capital</th>
@@ -99,7 +99,7 @@
                 <td>${credit.amount}</td>
             </tr>
             <c:forEach var="i" items="${credit.periods}">
-                <tr>
+                <tr onclick="location.href='#';" style="cursor: pointer;">
                     <td>${credit.periods.get(i-1)}</td>
                     <td>${credit.capitalParts.get(i-1)}</td>
                     <td>${credit.interests.get(i-1)}</td>
