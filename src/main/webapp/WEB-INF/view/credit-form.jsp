@@ -27,7 +27,7 @@
             crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="bg-light text-muted" style="">
 <div class="collapse" id="navbarHeader">
     <div class="container">
         <div class="row">
@@ -51,8 +51,7 @@
         </div>
     </div>
 </div>
-<div class="navbar border-info navbar-dark bg-primary"
-     style="	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;	box-shadow: 0px 0px 4px  black;">
+<div class="navbar navbar-dark bg-info">
     <div class="container d-flex justify-content-between">
         <a href="#" class="navbar-brand d-flex align-items-center"><i class="icon-home"></i><strong>Home</strong> </a>
         <a href="#" class="navbar-brand d-flex align-items-center"><i class="icon-github-circled"></i><strong>Source
@@ -74,6 +73,33 @@
                 <h1 class="text-left">Forum Spring Security</h1>
                 <p class="lead text-left">Free open source projects present different java solutions using spring,
                     hibernate and other popular frameworks.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row my-3">
+    <div class="container w-50">
+        <div class="row">
+            <div class="col-md-4">
+                <form class="">
+                    <div class="form-group text-center"><label>Text</label> <input type="text" class="form-control"
+                                                                                   placeholder=""></div>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <form class="">
+                    <div class="form-group text-center"><label>Text</label> <input type="text" class="form-control"
+                                                                                   placeholder=""></div>
+                </form>
+                <div class="row">
+                    <div class="col-md-12 text-left"><a class="btn btn-outline-primary w-100" href="#">Outline</a></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <form class="">
+                    <div class="form-group text-center"><label>Text</label> <input type="text" class="form-control"
+                                                                                   placeholder=""></div>
+                </form>
             </div>
         </div>
     </div>
