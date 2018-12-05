@@ -1,8 +1,11 @@
 package pl.javacoding.model;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class Credit {
 
     private int period;
@@ -15,6 +18,7 @@ public class Credit {
     private List<Double> debtBalances;
     private List<Integer> periods;
 
+    public Credit(){}
 
     public Credit(int period, double amount, double rateOfInterest) {
         this.period = period;

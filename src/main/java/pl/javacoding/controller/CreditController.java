@@ -7,7 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
+import pl.javacoding.entity.Topic;
 import pl.javacoding.model.Credit;
 import pl.javacoding.model.Offer;
 import pl.javacoding.model.OfferList;
@@ -24,32 +25,35 @@ public class CreditController {
     Utils utils;
     @Autowired
     OfferList offerList;
+    @Autowired
     Credit credit; // warning - can be null !!!
 
-    @PostConstruct
-    public void init() {
-       /* List<Offer> offers = offerList.getOffers();
+   /* @PutMapping("/credit")
+    public String selectInterest(Model theModel, Credit credit, @RequestParam("tresc") String content) {
 
-        for (Offer offer : offers) {
-            System.out.println(offer.toString());
-        }*/
+        return "credit-form";
+    }*/
 
+    @PostMapping("/credit")
+    public String calculate(@ModelAttribute("credit") Credit credit, Model theModel) {
+        this.credit = new Credit(credit.getPeriod(), credit.getAmount(), credit.getRateOfInterest());
+        System.out.println(this.credit.toString());
+        theModel.addAttribute("newCredit", this.credit);
+        return "credit-form-result";
     }
 
     @GetMapping("/credit")
     public String getNewTopic(Model theModel) {
-        Credit credit = new Credit(15, 5000, 6);
         List<Offer> offers = offerList.getOffers();
         theModel.addAttribute("credit", credit);
-        theModel.addAttribute("offers",offers);
-        this.credit = credit;
+        theModel.addAttribute("offers", offers);
         return "credit-form";
     }
 
     @GetMapping("/downloadpdf")
     public ResponseEntity<InputStreamResource> downloadPDF() {
         utils.exportCreditTimetableToPdf(credit);
-        File file = new File("/tmp/timetable.pdf");
+        File file = new File("C:\\Users\\msiwiak\\Desktop\\timetable.pdf");
         InputStreamResource resource = null;
         try {
             resource = new InputStreamResource(new FileInputStream(file));
@@ -66,7 +70,7 @@ public class CreditController {
     @GetMapping("/downloadxls")
     public ResponseEntity<InputStreamResource> downloadXls() {
         utils.exportCreditTimetableToXls(credit);
-        File file = new File("/tmp/poi-generated-file.xlsx");
+        File file = new File("C:\\Users\\msiwiak\\Desktop\\poi-generated-file.xlsx");
         InputStreamResource resource = null;
         try {
             resource = new InputStreamResource(new FileInputStream(file));

@@ -81,41 +81,33 @@
     </div>
 </div>
 <div class="row my-3">
-    <div class="container w-50">
-        <div class="row">
-            <form:form modelAttribute="credit" method="POST">
-                <p>Amount</p>
-                <form:input path="amount" type="number" required="true" class="form-control"/>
-                <p>Period</p>
-                <form:input path="period" type="number" required="true" class="form-control"/>
-                <p>Stopa procentowa:</p>
-                <form:input path="rateOfInterest" type="number" required="true" class="form-control"/>
-                <br/> <input type="submit" class="btn btn-primary" value="Calculate"/>
-            </form:form>
-        </div>
-    </div>
 </div>
 <div class="row my-4">
     <div class="container p-0">
-        <h1>Oferty</h1>
+        <h1>Timetable</h1>
         <table class="table table-striped table-hover">
             <tbody data-link="row" class="rowlink text-center">
             <tr>
-                <th>title</th>
-                <th>bankName</th>
-                <th>margin</th>
-                <th>interest</th>
-                <th>commission</th>
-                <th>rrso</th>
+                <th>number</th>
+                <th>amount of capital</th>
+                <th>amount of interest</th>
+                <th>installment</th>
+                <th>balance of debt</th>
             </tr>
-            <c:forEach var="offer" items="${offers}">
+            <tr>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>${credit.amount}</td>
+            </tr>
+            <c:forEach var="i" items="${newCredit.periods}">
                 <tr onclick="location.href='#';" style="cursor: pointer;">
-                    <td>${offer.title}</td>
-                    <td>${offer.bankName}</td>
-                    <td>${offer.margin}</td>
-                    <td>${offer.interest}</td>
-                    <td>${offer.commission}</td>
-                    <td>${offer.rrso}</td>
+                    <td>${newCredit.periods.get(i-1)}</td>
+                    <td>${newCredit.capitalParts.get(i-1)}</td>
+                    <td>${newCredit.interests.get(i-1)}</td>
+                    <td>${newCredit.payment}</td>
+                    <td>${newCredit.debtBalances.get(i-1)}</td>
                 </tr>
             </c:forEach>
             </tbody>
