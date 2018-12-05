@@ -15,7 +15,7 @@
     <meta name="description" content="Wireframe design of an album page by Pingendo">
     <meta name="keywords" content="Pingendo bootstrap example template wireframe album ">
     <!-- CSS dependencies -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/neon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/now-ui-kit.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -27,7 +27,7 @@
             crossorigin="anonymous"></script>
 </head>
 
-<body class="bg-light text-muted" style="">
+<body class="bg-light text-dark" style="">
 <div class="collapse" id="navbarHeader">
     <div class="container">
         <div class="row">
@@ -104,6 +104,8 @@
         </div>
     </div>
 </div>
+
+
 <div class="row my-4">
     <div class="container p-0">
 
@@ -137,6 +139,37 @@
         </table>
     </div>
 </div>
+
+<div class="row my-4">
+    <div class="container p-0">
+
+        <h1>Oferty</h1>
+        <table class="table table-striped table-hover">
+            <tbody data-link="row" class="rowlink">
+            <tr>
+                <th>title</th>
+                <th>bankName</th>
+                <th>margin</th>
+                <th>interest</th>
+                <th>commission</th>
+                <th>rrso</th>
+            </tr>
+            <c:forEach var="offer" items="${offers}">
+                <tr onclick="location.href='#';" style="cursor: pointer;">
+                    <td>${offer.title}</td>
+                    <td>${offer.bankName}</td>
+                    <td>${offer.margin}</td>
+                    <td>${offer.interest}</td>
+                    <td>${offer.commission}</td>
+                    <td>${offer.rrso}</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
 <footer class="text-muted py-5">
     <div class="container">
         <p class="float-right">
