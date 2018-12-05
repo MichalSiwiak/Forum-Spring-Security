@@ -6,27 +6,27 @@
 <html>
 
 <head>
+    <!-- PAGE settings -->
     <meta charset="utf-8">
     <title>Album</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- PAGE settings -->
-    <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
-    <link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet" type="text/css">
-    <meta name="description" content="Wireframe design of an album page by Pingendo">
-    <meta name="keywords" content="Pingendo bootstrap example template wireframe album ">
+    <meta name="description" content="to be completed...">
+    <meta name="keywords" content="to be completed...">
     <!-- CSS dependencies -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/now-ui-kit.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    <link rel="icon" href="to be completed...">
+    <link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet" type="text/css">
+    <!-- PAGE scripts -->
+    <script src="//code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
             integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
             crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
 </head>
-
 <body class="bg-light text-dark" style="">
 <div class="collapse" id="navbarHeader">
     <div class="container">
@@ -51,7 +51,7 @@
         </div>
     </div>
 </div>
-<div class="navbar navbar-dark bg-info">
+<div class="navbar sticky-top navbar-dark bg-info">
     <div class="container d-flex justify-content-between">
         <a href="#" class="navbar-brand d-flex align-items-center"><i class="icon-home"></i><strong>Home</strong> </a>
         <a href="#" class="navbar-brand d-flex align-items-center"><i class="icon-github-circled"></i><strong>Source
@@ -66,13 +66,17 @@
                 class="navbar-toggler-icon"></span></button>
     </div>
 </div>
-<div class="text-center bg-dark py-3">
+<div class="text-center py-4 bg-secondary"
+     style="	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9));	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-0">
-                <h1 class="text-left">Forum Spring Security</h1>
-                <p class="lead text-left">Free open source projects present different java solutions using spring,
-                    hibernate and other popular frameworks.</p>
+                <h1 class="text-left text-primary">Credit Timetable Generator</h1>
+                <p class="lead text-left">The application collects offers of housing loans from the
+                    <a href="https://hipoteki.net/ranking-kredytow-hipotecznych/" target="_blank"/>" using the jsoup
+                    library. The user has the option of selecting a home loan and generating a loan schedule using the
+                    installment plan. Credit installment is calculated based on the value entered by the user. The user
+                    has the option to export the loan repayment schedule to an Excel or PDF file.</p>
             </div>
         </div>
     </div>
@@ -82,36 +86,39 @@
         <div class="row">
             <div class="col-md-4">
                 <form class="">
-                    <div class="form-group text-center"><label>Text</label> <input type="text" class="form-control"
-                                                                                   placeholder=""></div>
+                    <div class="form-group text-center"><label>Amount</label> <input type="number" placeholder=""
+                                                                                     required="true"
+                                                                                     class="form-control"></div>
                 </form>
             </div>
             <div class="col-md-4">
                 <form class="">
-                    <div class="form-group text-center"><label>Text</label> <input type="text" class="form-control"
-                                                                                   placeholder=""></div>
+                    <div class="form-group text-center"><label>Period</label> <input type="number" class="form-control"
+                                                                                     placeholder="" required="true">
+                    </div>
                 </form>
                 <div class="row">
-                    <div class="col-md-12 text-left"><a class="btn btn-outline-primary w-100" href="#">Outline</a></div>
+                    <div class="col-md-12 text-left">
+                        <button class="btn btn-primary rounded w-100" type="button">Calculate</button>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <form class="">
-                    <div class="form-group text-center"><label>Text</label> <input type="text" class="form-control"
-                                                                                   placeholder=""></div>
+                    <div class="form-group text-center"><label>Interest</label> <input type="number"
+                                                                                       class="form-control"
+                                                                                       placeholder="" required="true">
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-
-<div class="row my-4">
+<%--<div class="row my-4">
     <div class="container p-0">
-
         <h1>Credit</h1>
         <table class="table table-striped table-hover">
-            <tbody data-link="row" class="rowlink">
+            <tbody data-link="row" class="rowlink text-center">
             <tr>
                 <th>number</th>
                 <th>amount of capital</th>
@@ -138,14 +145,12 @@
             </tbody>
         </table>
     </div>
-</div>
-
+</div>--%>
 <div class="row my-4">
     <div class="container p-0">
-
         <h1>Oferty</h1>
         <table class="table table-striped table-hover">
-            <tbody data-link="row" class="rowlink">
+            <tbody data-link="row" class="rowlink text-center">
             <tr>
                 <th>title</th>
                 <th>bankName</th>
@@ -168,9 +173,7 @@
         </table>
     </div>
 </div>
-
-
-<footer class="text-muted py-5">
+<footer class="py-5 bg-dark text-muted">
     <div class="container">
         <p class="float-right">
             <a href="#">Back to top</a>
