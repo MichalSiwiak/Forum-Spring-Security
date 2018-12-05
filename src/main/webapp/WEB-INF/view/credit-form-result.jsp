@@ -84,7 +84,19 @@
 </div>
 <div class="row my-4">
     <div class="container p-0">
-        <h1>Timetable</h1>
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <div class="btn-group">
+                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Download</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/downloadpdf">PDF</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/downloadxls">XLS</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1 class="text-center">Timetable</h1>
         <table class="table table-striped table-hover">
             <tbody data-link="row" class="rowlink text-center">
             <tr>

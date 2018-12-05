@@ -70,7 +70,7 @@ public class CreditController {
     @GetMapping("/downloadxls")
     public ResponseEntity<InputStreamResource> downloadXls() {
         utils.exportCreditTimetableToXls(credit);
-        File file = new File("C:\\Users\\msiwiak\\Desktop\\poi-generated-file.xlsx");
+        File file = new File("C:\\Users\\msiwiak\\Desktop\\poi-generated-file.xls");
         InputStreamResource resource = null;
         try {
             resource = new InputStreamResource(new FileInputStream(file));
