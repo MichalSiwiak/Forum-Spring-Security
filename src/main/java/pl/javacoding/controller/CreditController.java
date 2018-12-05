@@ -8,13 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.javacoding.entity.Topic;
 import pl.javacoding.model.Credit;
 import pl.javacoding.model.Offer;
 import pl.javacoding.model.OfferList;
 import pl.javacoding.utils.Utils;
 
-import javax.annotation.PostConstruct;
 import java.io.*;
 import java.util.List;
 
@@ -28,16 +26,9 @@ public class CreditController {
     @Autowired
     Credit credit; // warning - can be null !!!
 
-   /* @PutMapping("/credit")
-    public String selectInterest(Model theModel, Credit credit, @RequestParam("tresc") String content) {
-
-        return "credit-form";
-    }*/
-
     @PostMapping("/credit")
     public String calculate(@ModelAttribute("credit") Credit credit, Model theModel) {
         this.credit = new Credit(credit.getPeriod(), credit.getAmount(), credit.getRateOfInterest());
-        System.out.println(this.credit.toString());
         theModel.addAttribute("newCredit", this.credit);
         return "credit-form-result";
     }
@@ -64,7 +55,6 @@ public class CreditController {
                         "attachment;filename=" + file.getName())
                 .contentType(MediaType.APPLICATION_PDF).contentLength(file.length())
                 .body(resource);
-
     }
 
     @GetMapping("/downloadxls")
@@ -81,8 +71,5 @@ public class CreditController {
                         "attachment;filename=" + file.getName())
                 .contentType(MediaType.valueOf("application/vnd.ms-excel")).contentLength(file.length())
                 .body(resource);
-
     }
-
-
 }

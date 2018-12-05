@@ -89,7 +89,8 @@
                 <p>Period</p>
                 <form:input path="period" type="number" required="true" class="form-control"/>
                 <p>Stopa procentowa:</p>
-                <form:input path="rateOfInterest" type="number" required="true" class="form-control"/>
+                <form:input id="rateOfInterest" path="rateOfInterest" type="number" min="0.01" max="20" step="0.01"
+                            required="true" class="form-control"/>
                 <br/> <input type="submit" class="btn btn-primary" value="Calculate"/>
             </form:form>
         </div>
@@ -99,7 +100,7 @@
     <div class="container p-0">
         <h1>Oferty</h1>
         <table class="table table-striped table-hover">
-            <tbody data-link="row" class="rowlink text-center">
+            <tbody class=" text-center">
             <tr>
                 <th>title</th>
                 <th>bankName</th>
@@ -109,7 +110,7 @@
                 <th>rrso</th>
             </tr>
             <c:forEach var="offer" items="${offers}">
-                <tr onclick="location.href='#';" style="cursor: pointer;">
+                <tr style="cursor: pointer;">
                     <td>${offer.title}</td>
                     <td>${offer.bankName}</td>
                     <td>${offer.margin}</td>

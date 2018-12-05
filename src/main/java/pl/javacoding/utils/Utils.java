@@ -18,13 +18,13 @@ public class Utils {
     public void exportCreditTimetableToPdf(Credit credit) {
 
         Document document = new Document();
-        // step 2
+
         try {
             PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\msiwiak\\Desktop\\timetable.pdf"));
         } catch (DocumentException e) {
         } catch (FileNotFoundException e) {
         }
-        // step 3
+
         document.open();
 
         Paragraph title = new Paragraph("Harmonogram spłaty kredytu");
