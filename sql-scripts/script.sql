@@ -1,6 +1,6 @@
-CREATE DATABASE  IF NOT EXISTS `web_customer_tracker` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE  IF NOT EXISTS `forum`
 
-USE web_customer_tracker;
+USE forum;
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `username` VARCHAR(50) NOT NULL,
