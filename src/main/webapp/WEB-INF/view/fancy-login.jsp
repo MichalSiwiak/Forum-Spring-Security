@@ -113,6 +113,58 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row my-4">
+            <div class="mx-auto col-md-6 col-10 col-xl-4 px-4">
+                <div class="card bg-primary">
+                    <div class="card-body text-center">
+                        <div class="row mt-5">
+                            <div class="col-md-12">
+                                <h5 class="mb-4">
+                                    <b>SIGN UP</b>
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="row mt-4 pt-2">
+                            <div class="col">
+                                <form>
+                                    <div class="form-group mb-2">
+                                        <div class="input-group border-0">
+                                            <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">
+                            <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+                          </span>
+                                            </div>
+                                            <input type="text" class="form-control" id="inlineFormInputGroup1"
+                                                   placeholder="login">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <div class="input-group border-0">
+                                            <div class="input-group-prepend ">
+                          <span class="input-group-text" id="basic-addon2">
+                            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                          </span>
+                                            </div>
+                                            <input type="password" class="form-control" id="inlineFormInputGroup2"
+                                                   placeholder="password">
+                                        </div>
+                                    </div>
+                                    <button type="submit"
+                                            class="btn rounded btn-lg btn-warning text-dark w-75 mb-2 mt-2">Login
+                                    </button>
+                                    <button type="submit"
+                                            class="btn rounded btn-lg text-dark text-center w-75 mt-0 mb-0 btn-info">
+                                        Registration
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <footer class="text-muted py-5">
     <div class="container">

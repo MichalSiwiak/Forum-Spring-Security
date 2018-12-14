@@ -1,7 +1,6 @@
 package org.coffecode.controller;
 
 import org.coffecode.entity.Topic;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 import org.coffecode.entity.Entry;
 import org.coffecode.service.EntryService;
