@@ -3,121 +3,189 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Album</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- PAGE settings -->
-    <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
-    <link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet" type="text/css">
-    <meta name="description" content="Wireframe design of an album page by Pingendo">
-    <meta name="keywords" content="Pingendo bootstrap example template wireframe album ">
+    <title>coffeecoding.net</title>
+    <meta name="description"
+          content="Free open source projects present different java solutions using spring, hibernate and other popular frameworks.">
+    <meta name="keywords"
+          content="java, spring, hibernate, apache, tomcat, coding, programmer, linux, google cloud platform, open source, bootstrap, mysql, java ideas">
     <!-- CSS dependencies -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/neon.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.standalone.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/now-ui-kit.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css">
+    <link rel="icon" href="resources/img/favicon.png">
+    <!-- PAGE scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
 </head>
 
-<body>
-<div class="collapse" id="navbarHeader">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7 py-4">
-                <h4>About</h4>
-                <p class="text-info">Free open source projects present different java solutions using spring, hibernate
-                    and other popular frameworks.</p>
-            </div>
-            <div class="col-md-3 offset-md-1 py-4">
-                <h4>Contact</h4>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="https://pl.linkedin.com/in/michalsiwiak" class="text-secondary" target="_blank">Follow
-                            on LinkedIn</a>
-                    </li>
-                    <li>
-                        <a href="mailto:info@javacoding.pl" target="_top" class="text-secondary">Email me</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="navbar border-info navbar-dark bg-primary"
-     style="	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;	box-shadow: 0px 0px 4px  black;">
-    <div class="container d-flex justify-content-between">
-        <a href="#" class="navbar-brand d-flex align-items-center"><i class="icon-home"></i><strong>Home</strong> </a>
-        <a href="#" class="navbar-brand d-flex align-items-center"><i class="icon-github-circled"></i><strong>Source
-            Code</strong> </a>
-        <a href="#" class="navbar-brand d-flex align-items-center"><i
-                class="icon-doc-text"></i><strong>Description</strong> </a>
-        <a href="#" class="navbar-brand d-flex align-items-center"><i class="icon-vcard"></i><strong>Resume</strong>
-        </a>
-        <a href="#" class="navbar-brand d-flex align-items-center"><i class="icon-mail-alt"></i><strong>Contact</strong>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"><span
-                class="navbar-toggler-icon"></span></button>
-    </div>
-</div>
-<div class="text-center bg-dark py-3">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-0">
-                <h1 class="text-left">Forum Spring Security</h1>
-                <p class="lead text-left">Free open source projects present different java solutions using spring,
-                    hibernate and other popular frameworks.</p>
+
+<body class="bg-light text-dark">
+<div id="wrap">
+    <div id="main" class="clear-top">
+
+
+        <div class="collapse" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 py-4">
+                        <h4>About</h4>
+                        <p class="text-info">Free open source projects present different java solutions using spring,
+                            hibernate
+                            and other popular frameworks.</p>
+                    </div>
+                    <div class="col-md-3 offset-md-1 py-4">
+                        <h4>Contact</h4>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="https://pl.linkedin.com/in/michalsiwiak" class="text-secondary"
+                                   target="_blank">Follow
+                                    on LinkedIn</a>
+                            </li>
+                            <li>
+                                <a href="mailto:info@coffeecoding.net" target="_top" class="text-secondary">Email me</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="row my-4">
-    <div class="container p-0">
-        <h1>Temat ${temat.title}</h1>
-        <table class="table table-striped">
-            <tr>
-                <th>Login</th>
-                <th>Treść</th>
-                <th>Data</th>
-            </tr>
-            <tr>
-                <td>${temat.users.username}</td>
-                <td>${temat.content}</td>
-                <td>${temat.date}</td>
-            </tr>
-            <c:forEach var="wpis" items="${temat.entries}">
-                <tr>
-                    <td>${wpis.users.username}</td>
-                    <td>${wpis.content}</td>
-                    <td>${wpis.date}</td>
-                </tr>
-            </c:forEach>
-        </table>
-        <div><form:form method="POST">
-            <%--<form:input path="topic" type="hidden" value="${temat.id}" />--%>
-            <p>Wprowadź treść odpowiedzi:</p>
-            <textarea name="tresc" cols="40" rows="8">${param.tresc}</textarea>
-            <br/> <input type="submit" value="OK">
-        </form:form>
+
+
+        <div class="navbar sticky-top navbar-dark bg-info">
+            <div class="container d-flex justify-content-between">
+                <a href="https://www.coffeecoding.net/" class="navbar-brand d-flex align-items-center"><i
+                        class="fa fa-home fa-2x lead fa-fw d-inline-block" aria-hidden="true"></i>&nbsp;&nbsp;<text
+                        class="">
+                    HOME
+                </text>
+                </a>
+                <a href="https://github.com/MichalSiwiak/Forum-Spring-Security" target="_blank"
+                   class="navbar-brand d-flex align-items-center"><i
+                        class="fa fa-git-square fa-fw d-inline-block lead fa-2x"></i>&nbsp;&nbsp;<text class="">SOURCE
+                    CODE
+                </text>
+                </a>
+                <a href="${pageContext.request.contextPath}" class="navbar-brand d-flex align-items-center"><i
+                        class="fa fa-file-text fa-2x fa-fw lead d-inline-block" aria-hidden="true"></i>&nbsp;&nbsp;<text
+                        class="">DESCRIPTION
+                </text>
+                </a>
+                <a href="/resume" class="navbar-brand d-flex align-items-center"><i
+                        class="fa fa-address-card fa-2x lead fa-fw d-inline-block" aria-hidden="true"></i>&nbsp;&nbsp;<text
+                        class="">RESUME
+                </text>
+                </a>
+                <a href="/contact" class="navbar-brand d-flex align-items-center"><i
+                        class="fa fa-envelope fa-2x lead fa-fw d-inline-block" aria-hidden="true"></i>&nbsp;&nbsp;<text
+                        class="">CONTACT
+                </text>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"><span
+                        class="navbar-toggler-icon"></span></button>
+            </div>
         </div>
+
+
+        <div class="text-center py-4 bg-secondary"
+             style="	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9));	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-0">
+                        <h1 class="text-left text-primary">Forum Spring Security</h1>
+                        <p class="lead text-left"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="pt-0 pb-5">
+            <div class="container">
+
+                <div class="row my-3">
+                    <div class="col-md-6">
+                        <h4 class="m-0 p-0">
+                            Welcome: <security:authentication property="principal.username"/>
+                        </h4>
+                    </div>
+                    <div class="col-md-6">
+                        <form:form action="${pageContext.request.contextPath}/logout" method="post">
+                            <button class="btn text-light mb-4 btn-primary float-right" type="submit">
+                                <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> &nbsp; LOGOUT
+                            </button>
+                        </form:form>
+                    </div>
+                </div>
+
+                <div class="row my-4">
+                    <div class="container p-0">
+                        <h1>Temat ${temat.title}</h1>
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Login</th>
+                                <th>Treść</th>
+                                <th>Data</th>
+                            </tr>
+                            <tr>
+                                <td>${temat.users.username}</td>
+                                <td>${temat.content}</td>
+                                <td>${temat.date}</td>
+                            </tr>
+                            <c:forEach var="wpis" items="${temat.entries}">
+                                <tr>
+                                    <td>${wpis.users.username}</td>
+                                    <td>${wpis.content}</td>
+                                    <td>${wpis.date}</td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                        <div><form:form method="POST">
+                            <%--<form:input path="topic" type="hidden" value="${temat.id}" />--%>
+                            <p>Wprowadź treść odpowiedzi:</p>
+                            <textarea name="tresc" cols="40" rows="8">${param.tresc}</textarea>
+                            <br/> <input type="submit" value="OK">
+                        </form:form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
     </div>
 </div>
-<footer class="text-muted py-5">
+
+
+<footer class="footer bg-dark text-muted">
     <div class="container">
         <p class="float-right">
             <a href="#">Back to top</a>
         </p>
-        <p>© Copyright 2018 javacoding.pl - All rights reserved.<br>Contact: info@javacoding.pl<br>02-619 Warsaw<br><a
-                href="https://www.javacoding.pl/">Visit the homepage</a>
+        <p>© Copyright 2018 coffeecoding.net - All rights reserved.<br>Contact: info@coffeecoding.net<br>Warsaw PL<br><a
+                href="https://www.coffeecoding.net/">Visit the homepage</a>
         </p>
     </div>
 </footer>
+
+
 </body>
 </html>

@@ -3,178 +3,199 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Album</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- PAGE settings -->
-    <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
-    <link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet" type="text/css">
-    <meta name="description" content="Wireframe design of an album page by Pingendo">
-    <meta name="keywords" content="Pingendo bootstrap example template wireframe album ">
+    <title>coffeecoding.net</title>
+    <meta name="description"
+          content="Free open source projects present different java solutions using spring, hibernate and other popular frameworks.">
+    <meta name="keywords"
+          content="java, spring, hibernate, apache, tomcat, coding, programmer, linux, google cloud platform, open source, bootstrap, mysql, java ideas">
     <!-- CSS dependencies -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/neon.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.standalone.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/now-ui-kit.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css">
+    <link rel="icon" href="resources/img/favicon.png">
+    <!-- PAGE scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
 </head>
 
-<body>
-<div class="collapse" id="navbarHeader">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7 py-4">
-                <h4>About</h4>
-                <p class="text-info">Free open source projects present different java solutions using spring, hibernate
-                    and other popular frameworks.</p>
-            </div>
-            <div class="col-md-3 offset-md-1 py-4">
-                <h4>Contact</h4>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="https://pl.linkedin.com/in/michalsiwiak" class="text-secondary" target="_blank">Follow
-                            on LinkedIn</a>
-                    </li>
-                    <li>
-                        <a href="mailto:info@javacoding.pl" target="_top" class="text-secondary">Email me</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="navbar border-info navbar-dark bg-primary"
-     style="	background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));	background-position: top left;	background-size: 100%;	background-repeat: repeat;	box-shadow: 0px 0px 4px  black;">
-    <div class="container d-flex justify-content-between">
-        <a href="#" class="navbar-brand d-flex align-items-center"><i class="icon-home"></i><strong>Home</strong> </a>
-        <a href="#" class="navbar-brand d-flex align-items-center"><i class="icon-github-circled"></i><strong>Source
-            Code</strong> </a>
-        <a href="#" class="navbar-brand d-flex align-items-center"><i
-                class="icon-doc-text"></i><strong>Description</strong> </a>
-        <a href="#" class="navbar-brand d-flex align-items-center"><i class="icon-vcard"></i><strong>Resume</strong>
-        </a>
-        <a href="#" class="navbar-brand d-flex align-items-center"><i class="icon-mail-alt"></i><strong>Contact</strong>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"><span
-                class="navbar-toggler-icon"></span></button>
-    </div>
-</div>
-<div class="text-center bg-dark py-3">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-0">
-                <h1 class="text-left">Forum Spring Security</h1>
-                <p class="lead text-left">Free open source projects present different java solutions using spring,
-                    hibernate and other popular frameworks.</p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="py-4 text-info" style="	text-shadow: 0px 0px 4px black;	box-shadow: 0px 0px 4px  black;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+
+<body class="bg-light text-dark">
+<div id="wrap">
+    <div id="main" class="clear-top">
+
+
+        <div class="collapse" id="navbarHeader">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4 col-xs-offset-1 col-xs-10 text-center w-100">
-                        <form action="${pageContext.request.contextPath}/authenticateTheUser" method="POST">
-                            <!-- Check for logout -->
-                            <c:if test="${param.logout != null}">
-                                <h6 class="text-info mb-2 mt-2">You have been logged out</h6>
-                            </c:if>
-                            <div class="form-group text-center"><label class="w-100 text-center">Sign In</label> <input
-                                    type="text" name="username" placeholder="username"
-                                    class="form-control text-center w-75 d-inline-flex"
-                                    placeholder="Enter email"></div>
-                            <div class="form-group"><input type="password" name="password" placeholder="password"
-                                                           class="form-control text-center d-inline-flex w-75"
-                                                           placeholder="Password">
-                                <c:if test="${param.error != null}">
-                                    <h6 class="text-danger mb-2 mt-2">Invalid username and password</h6>
-                                </c:if>
-                            </div>
-                            <button type="submit" class="btn mb-2 btn-success w-75 btn-lg">Login</button>
-                            <a href="${pageContext.request.contextPath}/register/showRegistrationForm"
-                               class="btn mb-2 w-75 text-center btn-info btn-lg" role="button" aria-pressed="true">Register
-                                New User</a>
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-                        </form>
+                    <div class="col-md-7 py-4">
+                        <h4>About</h4>
+                        <p class="text-info">Free open source projects present different java solutions using spring,
+                            hibernate
+                            and other popular frameworks.</p>
                     </div>
-                    <div class="col-md-4"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row my-4">
-            <div class="mx-auto col-md-6 col-10 col-xl-4 px-4">
-                <div class="card bg-primary">
-                    <div class="card-body text-center">
-                        <div class="row mt-5">
-                            <div class="col-md-12">
-                                <h5 class="mb-4">
-                                    <b>SIGN UP</b>
-                                </h5>
-                            </div>
-                        </div>
-                        <div class="row mt-4 pt-2">
-                            <div class="col">
-                                <form>
-                                    <div class="form-group mb-2">
-                                        <div class="input-group border-0">
-                                            <div class="input-group-prepend">
-                          <span class="input-group-text" id="basic-addon1">
-                            <i class="fa fa-user fa-lg" aria-hidden="true"></i>
-                          </span>
-                                            </div>
-                                            <input type="text" class="form-control" id="inlineFormInputGroup1"
-                                                   placeholder="login">
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-2">
-                                        <div class="input-group border-0">
-                                            <div class="input-group-prepend ">
-                          <span class="input-group-text" id="basic-addon2">
-                            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
-                          </span>
-                                            </div>
-                                            <input type="password" class="form-control" id="inlineFormInputGroup2"
-                                                   placeholder="password">
-                                        </div>
-                                    </div>
-                                    <button type="submit"
-                                            class="btn rounded btn-lg btn-warning text-dark w-75 mb-2 mt-2">Login
-                                    </button>
-                                    <button type="submit"
-                                            class="btn rounded btn-lg text-dark text-center w-75 mt-0 mb-0 btn-info">
-                                        Registration
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+                    <div class="col-md-3 offset-md-1 py-4">
+                        <h4>Contact</h4>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="https://pl.linkedin.com/in/michalsiwiak" class="text-secondary"
+                                   target="_blank">Follow
+                                    on LinkedIn</a>
+                            </li>
+                            <li>
+                                <a href="mailto:info@coffeecoding.net" target="_top" class="text-secondary">Email me</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
+
+
+        <div class="navbar sticky-top navbar-dark bg-info">
+            <div class="container d-flex justify-content-between">
+                <a href="https://www.coffeecoding.net/" class="navbar-brand d-flex align-items-center"><i
+                        class="fa fa-home fa-2x lead fa-fw d-inline-block" aria-hidden="true"></i>&nbsp;&nbsp;<text
+                        class="">
+                    HOME
+                </text>
+                </a>
+                <a href="https://github.com/MichalSiwiak/Forum-Spring-Security" target="_blank"
+                   class="navbar-brand d-flex align-items-center"><i
+                        class="fa fa-git-square fa-fw d-inline-block lead fa-2x"></i>&nbsp;&nbsp;<text class="">SOURCE
+                    CODE
+                </text>
+                </a>
+                <a href="${pageContext.request.contextPath}" class="navbar-brand d-flex align-items-center"><i
+                        class="fa fa-file-text fa-2x fa-fw lead d-inline-block" aria-hidden="true"></i>&nbsp;&nbsp;<text
+                        class="">DESCRIPTION
+                </text>
+                </a>
+                <a href="/resume" class="navbar-brand d-flex align-items-center"><i
+                        class="fa fa-address-card fa-2x lead fa-fw d-inline-block" aria-hidden="true"></i>&nbsp;&nbsp;<text
+                        class="">RESUME
+                </text>
+                </a>
+                <a href="/contact" class="navbar-brand d-flex align-items-center"><i
+                        class="fa fa-envelope fa-2x lead fa-fw d-inline-block" aria-hidden="true"></i>&nbsp;&nbsp;<text
+                        class="">CONTACT
+                </text>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"><span
+                        class="navbar-toggler-icon"></span></button>
+            </div>
+        </div>
+
+
+        <div class="text-center py-4 bg-secondary"
+             style="	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9));	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-0">
+                        <h1 class="text-left text-primary">Forum Spring Security</h1>
+                        <p class="lead text-left"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="py-5">
+            <div class="container">
+                <div class="row my-4">
+                    <div class="mx-auto col-md-6 col-10 col-xl-4 px-4">
+                        <div class="card bg-primary rounded">
+                            <div class="card-body text-center rounded bg-dark">
+                                <div class="row mt-5">
+                                    <div class="col-md-12">
+                                        <h5 class="mb-4"><b>MEMBER LOGIN</b></h5>
+                                    </div>
+                                    <c:if test="${param.error != null}">
+                                        <div class="alert alert-danger col-xs-offset-1 col-xs-10 w-100 text-light">
+                                            Invalid
+                                            username/password.
+                                        </div>
+                                    </c:if>
+                                </div>
+                                <div class="row pt-2 mt-0">
+                                    <div class="col bg-dark">
+                                        <form:form action="${pageContext.request.contextPath}/authenticateTheUser"
+                                                   method="POST" autocomplete="off">
+                                            <div class="form-group mb-2">
+                                                <div class="input-group border-0">
+                                                    <div class="input-group-prepend">
+                          <span class="input-group-text">
+                            <i class="fa fa-envelope text-light" aria-hidden="true"></i>
+                          </span>
+                                                    </div>
+                                                    <input type="text" name="username" class="form-control"
+                                                           placeholder="Username...">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <div class="input-group border-0">
+                                                    <div class="input-group-prepend ">
+                          <span class="input-group-text">
+                            <i class="fa fa-lock fa-lg text-light" aria-hidden="true"></i>
+                          </span>
+                                                    </div>
+                                                    <input type="password" name="password" class="form-control"
+                                                           placeholder="Password...">
+                                                </div>
+                                            </div>
+                                            <button type="submit"
+                                                    class="btn mt-4 mb-3 rounded btn-lg btn-primary text-light w-100">
+                                                Login
+                                            </button>
+                                        </form:form>
+                                        <p class="">Forgot Password?</p>
+                                        <br> <br>
+                                        <p class="mt-5 mb-0" style=""><a
+                                                href="${pageContext.request.contextPath}/register/showRegistrationForm">
+                                            Create
+                                            your Account <i
+                                                class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </div>
-<footer class="text-muted py-5">
+
+
+<footer class="footer bg-dark text-muted">
     <div class="container">
         <p class="float-right">
             <a href="#">Back to top</a>
         </p>
-        <p>© Copyright 2018 javacoding.pl - All rights reserved.<br>Contact: info@javacoding.pl<br>02-619 Warsaw<br><a
-                href="https://www.javacoding.pl/">Visit the homepage</a>
+        <p>© Copyright 2018 coffeecoding.net - All rights reserved.<br>Contact: info@coffeecoding.net<br>Warsaw PL<br><a
+                href="https://www.coffeecoding.net/">Visit the homepage</a>
         </p>
     </div>
 </footer>
+
+
 </body>
 </html>
