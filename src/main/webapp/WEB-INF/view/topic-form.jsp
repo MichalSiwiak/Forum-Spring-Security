@@ -136,32 +136,39 @@
 
                 <div class="row my-4">
                     <div class="container p-0">
-                        <h1>Temat ${temat.title}</h1>
+                        <h1>Topic: ${topic.title}</h1>
                         <table class="table table-striped">
                             <tr>
-                                <th>Login</th>
-                                <th>Treść</th>
-                                <th>Data</th>
+                                <th>User</th>
+                                <th>Content</th>
+                                <th>Date</th>
                             </tr>
                             <tr>
-                                <td>${temat.users.username}</td>
-                                <td>${temat.content}</td>
-                                <td>${temat.date}</td>
+                                <td>${topic.users.username}</td>
+                                <td>${topic.content}</td>
+                                <td>${topic.date}</td>
                             </tr>
-                            <c:forEach var="wpis" items="${temat.entries}">
+                            <c:forEach var="entry" items="${topic.entries}">
                                 <tr>
-                                    <td>${wpis.users.username}</td>
-                                    <td>${wpis.content}</td>
-                                    <td>${wpis.date}</td>
+                                    <td>${entry.users.username}</td>
+                                    <td>${entry.content}</td>
+                                    <td>${entry.date}</td>
                                 </tr>
                             </c:forEach>
                         </table>
-                        <div><form:form method="POST">
-                            <%--<form:input path="topic" type="hidden" value="${temat.id}" />--%>
-                            <p>Wprowadź treść odpowiedzi:</p>
-                            <textarea name="tresc" cols="40" rows="8">${param.tresc}</textarea>
-                            <br/> <input type="submit" value="OK">
-                        </form:form>
+                        <div>
+                            <form:form method="POST">
+                                <p>Enter the answer:</p>
+                                <textarea name="content" required="true" cols="40" rows="8"
+                                          class="w-100">${param.content}</textarea>
+                                <br><%-- <input type="submit" value="OK" >--%>
+                                <button class="btn text-light btn-primary mb-0 my-4" type="submit">
+                                    <i class="fa fa-plus-square fa-lg" aria-hidden="true"  onclick="myFunction()"></i> &nbsp; Add answer
+                                </button>
+                                <a class="btn text-light btn-primary float-right mb-0 mt-4"
+                                   href="${pageContext.request.contextPath}/demo">
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp; Back</a>
+                            </form:form>
                         </div>
                     </div>
                 </div>
@@ -174,6 +181,19 @@
     </div>
 </div>
 
+<script>
+    $(window).scroll(function () {
+        sessionStorage.scrollTop = $(this).scrollTop();
+    });
+    $(document).ready(function () {
+        if (sessionStorage.scrollTop != "undefined") {
+            $(window).scrollTop(sessionStorage.scrollTop);
+        }
+    });
+    function myFunction() {
+        $("form").submit();
+    }
+</script>
 
 <footer class="footer bg-dark text-muted">
     <div class="container">

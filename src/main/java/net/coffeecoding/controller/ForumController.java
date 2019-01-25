@@ -26,23 +26,23 @@ public class ForumController {
     private EntryService entryService;
 
 
-    @GetMapping("/index")
+    @GetMapping("/demo")
     public String listTopics(Model theModel) {
 
         List<Topic> topics = topicService.getTopics();
-        theModel.addAttribute("tematy", topics);
+        theModel.addAttribute("topics", topics);
 
-        return "forum";
+        return "forum-form";
     }
 
-    @GetMapping("/nowyTemat")
+    @GetMapping("/new-topic")
     public String getNewTopic(Model theModel) {
         Topic topic = new Topic();
         theModel.addAttribute("topic", topic);
-        return "newTemat";
+        return "new-topic-form";
     }
 
-    @PostMapping("/nowyTemat")
+    @PostMapping("/new-topic")
     public String saveNewTopic(@ModelAttribute("topic") Topic topic, Principal principal) {
 
         if (!"".equals(topic.getTitle()) && !"".equals(topic.getContent())) {
@@ -50,27 +50,27 @@ public class ForumController {
             topic.setDate(date);
             topic.setUsers(usersService.getUser(principal.getName()));
             topicService.saveTopic(topic);
-            return "redirect:/temat?id=" + topic.getId();
+            return "redirect:/topic?id=" + topic.getId();
         } else {
-            return "newTemat";
+            return "new-topic-form";
         }
 
     }
 
-    @GetMapping("/temat")
+    @GetMapping("/topic")
     public String viewNewTopic(@RequestParam("id") int id, Model theModel) {
 
         if (id != 0) {
             Topic topic = topicService.getTopic(id);
-            theModel.addAttribute("temat", topic);
-            return "temat";
+            theModel.addAttribute("topic", topic);
+            return "topic-form";
         } else {
-            return "/index";
+            return "/demo";
         }
     }
 
-    @PostMapping("/temat")
-    public String saveNewEntry(@RequestParam("tresc") String content, @RequestParam("id") int id, Principal principal) {
+    @PostMapping("/topic")
+    public String saveNewEntry(@RequestParam("content") String content, @RequestParam("id") int id, Principal principal) {
 
         if (!"".equals(content) && id != 0) {
             Topic topic = topicService.getTopic(id);
@@ -80,9 +80,10 @@ public class ForumController {
             entry.setContent(content);
             entry.setUsers(usersService.getUser(principal.getName()));
             entryService.saveEntry(entry);
+            System.out.println(content);
         }
 
-        return "redirect:/temat?id=" + id;
+        return "redirect:/topic?id=" + id;
 
     }
 }

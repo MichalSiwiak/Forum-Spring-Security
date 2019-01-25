@@ -136,7 +136,7 @@
                                     <div class="col">
                                         <form:form
                                                 action="${pageContext.request.contextPath}/register/processRegistrationForm"
-                                                modelAttribute="crmUser" autocomplete="off">
+                                                modelAttribute="forumUser" autocomplete="off">
                                             <div class="form-group mb-2">
                                                 <div class="input-group border-0">
                                                     <div class="input-group-prepend">
@@ -165,6 +165,10 @@
                                                 Started
                                             </button>
                                         </form:form>
+                                        <br> <br>
+                                        <p class="mt-5 mb-0" style=""><a
+                                                href="${pageContext.request.contextPath}/showLoginPage">
+                                            <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i> Back </a></p>
                                     </div>
                                 </div>
                             </div>

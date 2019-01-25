@@ -3,7 +3,7 @@ package net.coffeecoding.user;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class CrmUser {
+public class ForumUser {
 
 	@NotNull(message="is required")
 	@Size(min=1, message="is required")	
@@ -13,7 +13,7 @@ public class CrmUser {
 	@Size(min=1, message="is required")
 	private String password;
 	
-	public CrmUser() {
+	public ForumUser() {
 		
 	}
 

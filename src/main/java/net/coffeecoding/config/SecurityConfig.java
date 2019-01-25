@@ -11,29 +11,33 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
+import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 @Configuration
 @EnableWebSecurity
-public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private DataSource myDataSource;
+    private DataSource dataSource;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(myDataSource);
+        auth.jdbcAuthentication().dataSource(dataSource);
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/index").hasAnyRole("ADMIN", "MANAGER", "EMPLOYEE")
-                .antMatchers("/customer/**").hasRole("EMPLOYEE")
+                .antMatchers("/demo").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/new-topic").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/topic").hasAnyRole("ADMIN", "USER")
                 .antMatchers("/resources/**").permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/showMyLoginPage")
+                .loginPage("/showLoginPage")
                 .loginProcessingUrl("/authenticateTheUser")
                 .permitAll()
                 .and()
@@ -41,13 +45,18 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/access-denied");
 
+        CharacterEncodingFilter filter = new CharacterEncodingFilter();
+        filter.setEncoding("UTF-8");
+        filter.setForceEncoding(true);
+        http.addFilterBefore(filter, CsrfFilter.class);
+
     }
 
     @Bean
     public UserDetailsManager userDetailsManager() {
 
         JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager();
-        jdbcUserDetailsManager.setDataSource(myDataSource);
+        jdbcUserDetailsManager.setDataSource(dataSource);
         return jdbcUserDetailsManager;
     }
 

@@ -116,61 +116,74 @@
         </div>
 
 
-        <div class="pt-0 pb-5">
+        <div class="py-5">
             <div class="container">
-
-                <div class="row my-3">
-                    <div class="col-md-6">
-                        <h4 class="m-0 p-0">
-                            Welcome: <security:authentication property="principal.username"/>
-                        </h4>
-                    </div>
-                    <div class="col-md-6">
-                        <form:form action="${pageContext.request.contextPath}/logout" method="post">
-                            <button class="btn text-light mb-4 btn-primary float-right" type="submit">
-                                <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> &nbsp; LOGOUT
-                            </button>
-                        </form:form>
-                    </div>
-                </div>
-
                 <div class="row my-4">
-                    <div class="container p-0">
-                        <div><c:url value="/nowyTemat" var="urlNowyTemat" scope="page"/>
-                            <form action="${urlNowyTemat}">
-                                <input type="submit" value="Nowy temat"/>
-                            </form>
-                        </div>
-                        <h1>Forum</h1>
-                        <table class="table table-striped">
-                            <tbody>
-                            <tr>
-                                <th>Temat</th>
-                                <th>Data</th>
-                                <th>Autor</th>
-                            </tr>
-                            <c:forEach var="temat" items="${tematy}">
+                    <div class="mx-auto col-md-6 col-10 col-xl-4 px-4">
+                        <div class="card bg-primary rounded">
+                            <div class="card-body text-center rounded bg-dark">
+                                <div class="row mt-5">
+                                    <div class="col-md-12">
+                                        <h5 class="mb-4"><b>MEMBER LOGIN</b></h5>
+                                    </div>
+                                    <c:if test="${param.error != null}">
+                                        <div class="alert alert-danger col-xs-offset-1 col-xs-10 w-100 text-light">
+                                            Invalid
+                                            username/password.
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${param.logout != null}">
 
-                                <tr>
-                                    <td>
-                                        <c:url var="url" scope="page" value="/temat">
-                                            <c:param name="id" value="${temat.id}">
-                                            </c:param>
-                                        </c:url> <a href="${url}">${temat.title}</a>
-                                    </td>
-                                    <td>
-                                        <fmt:formatDate value="${temat.date}" dateStyle="short" timeStyle="short"
-                                                        type="both"/>
-                                    </td>
-                                    <td>${temat.users.username}</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
+                                        <div class="alert alert-success col-xs-offset-1 col-xs-10 w-100 text-light">
+                                            You have been logged out.
+                                        </div>
+
+                                    </c:if>
+                                </div>
+                                <div class="row pt-2 mt-0">
+                                    <div class="col bg-dark">
+                                        <form:form action="${pageContext.request.contextPath}/authenticateTheUser"
+                                                   method="POST" autocomplete="off">
+                                            <div class="form-group mb-2">
+                                                <div class="input-group border-0">
+                                                    <div class="input-group-prepend">
+                          <span class="input-group-text">
+                            <i class="fa fa-envelope text-light" aria-hidden="true"></i>
+                          </span>
+                                                    </div>
+                                                    <input type="text" name="username" class="form-control"
+                                                           placeholder="Username...">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <div class="input-group border-0">
+                                                    <div class="input-group-prepend ">
+                          <span class="input-group-text">
+                            <i class="fa fa-lock fa-lg text-light" aria-hidden="true"></i>
+                          </span>
+                                                    </div>
+                                                    <input type="password" name="password" class="form-control"
+                                                           placeholder="Password...">
+                                                </div>
+                                            </div>
+                                            <button type="submit"
+                                                    class="btn mt-4 mb-3 rounded btn-lg btn-primary text-light w-100">
+                                                Login
+                                            </button>
+                                        </form:form>
+                                        <p class="">Forgot Password?</p>
+                                        <br> <br>
+                                        <p class="mt-5 mb-0" style=""><a
+                                                href="${pageContext.request.contextPath}/register/showRegistrationForm">
+                                            Create
+                                            your Account <i
+                                                class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
 

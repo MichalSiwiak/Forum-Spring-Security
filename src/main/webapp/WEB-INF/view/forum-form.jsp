@@ -136,14 +136,39 @@
 
                 <div class="row my-4">
                     <div class="container p-0">
-                        <form:form modelAttribute="topic" method="POST">
-                            <form:hidden path="id"/>
-                            <p>Wprowadź tytuł tematu:</p>
-                            <form:input path="title" type="text" name="tytul" id="tytul" maxlength="255"/>
-                            <p>Wprowadź treść tematu:</p>
-                            <form:textarea path="content" name="tresc" id="tresc" rows="9" cols="40"/>
-                            <br/> <input type="submit" value="Dodaj"/>
-                        </form:form>
+                        <div><c:url value="/new-topic" var="urlNewTopic" scope="page"/>
+                            <%-- <form action="${urlNewTopic}">
+                                 <input type="submit" value="New topic"/>
+                             </form>--%>
+                            <a class="btn text-light mb-4 btn-primary" href="${urlNewTopic}">
+                                <i class="fa fa-plus-square fa-lg" aria-hidden="true"></i> &nbsp; NEW TOPIC</a>
+                        </div>
+                        <h1>Forum</h1>
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr>
+                                <th>Topic</th>
+                                <th>Date</th>
+                                <th>Author</th>
+                            </tr>
+                            <c:forEach var="topic" items="${topics}">
+
+                                <tr>
+                                    <td>
+                                        <c:url var="url" scope="page" value="/topic">
+                                            <c:param name="id" value="${topic.id}">
+                                            </c:param>
+                                        </c:url> <a href="${url}">${topic.title}</a>
+                                    </td>
+                                    <td>
+                                        <fmt:formatDate value="${topic.date}" dateStyle="short" timeStyle="short"
+                                                        type="both"/>
+                                    </td>
+                                    <td>${topic.users.username}</td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 

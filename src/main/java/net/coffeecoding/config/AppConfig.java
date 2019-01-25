@@ -29,26 +29,18 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 @EnableTransactionManagement
 @ComponentScan("net.coffeecoding")
 @PropertySource({"classpath:persistence-mysql.properties"})
-public class DemoAppConfig implements WebMvcConfigurer {
+public class AppConfig implements WebMvcConfigurer {
 
     @Autowired
     private Environment env;
     private Logger logger = Logger.getLogger(getClass().getName());
 
     @Bean
-    public ViewResolver viewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/WEB-INF/view/");
-        viewResolver.setSuffix(".jsp");
-        return viewResolver;
-    }
+    public DataSource dataSource() {
 
-    @Bean
-    public DataSource myDataSource() {
-
-        ComboPooledDataSource myDataSource = new ComboPooledDataSource();
+        ComboPooledDataSource dataSource = new ComboPooledDataSource();
         try {
-            myDataSource.setDriverClass("com.mysql.jdbc.Driver");
+            dataSource.setDriverClass("com.mysql.jdbc.Driver");
         } catch (PropertyVetoException exc) {
             throw new RuntimeException(exc);
         }
@@ -56,16 +48,16 @@ public class DemoAppConfig implements WebMvcConfigurer {
         logger.info("jdbc.url=" + env.getProperty("jdbc.url"));
         logger.info("jdbc.user=" + env.getProperty("jdbc.user"));
 
-        myDataSource.setJdbcUrl(env.getProperty("jdbc.url"));
-        myDataSource.setUser(env.getProperty("jdbc.user"));
-        myDataSource.setPassword(env.getProperty("jdbc.password"));
+        dataSource.setJdbcUrl(env.getProperty("jdbc.url"));
+        dataSource.setUser(env.getProperty("jdbc.user"));
+        dataSource.setPassword(env.getProperty("jdbc.password"));
 
-        myDataSource.setInitialPoolSize(getIntProperty("connection.pool.initialPoolSize"));
-        myDataSource.setMinPoolSize(getIntProperty("connection.pool.minPoolSize"));
-        myDataSource.setMaxPoolSize(getIntProperty("connection.pool.maxPoolSize"));
-        myDataSource.setMaxIdleTime(getIntProperty("connection.pool.maxIdleTime"));
+        dataSource.setInitialPoolSize(getIntProperty("connection.pool.initialPoolSize"));
+        dataSource.setMinPoolSize(getIntProperty("connection.pool.minPoolSize"));
+        dataSource.setMaxPoolSize(getIntProperty("connection.pool.maxPoolSize"));
+        dataSource.setMaxIdleTime(getIntProperty("connection.pool.maxIdleTime"));
 
-        return myDataSource;
+        return dataSource;
     }
 
     private Properties getHibernateProperties() {
@@ -92,7 +84,7 @@ public class DemoAppConfig implements WebMvcConfigurer {
 
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 
-        sessionFactory.setDataSource(myDataSource());
+        sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan(env.getProperty("hibernate.packagesToScan"));
         sessionFactory.setHibernateProperties(getHibernateProperties());
 
