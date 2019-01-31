@@ -57,6 +57,7 @@ public class AppConfig implements WebMvcConfigurer {
         dataSource.setMaxPoolSize(getIntProperty("connection.pool.maxPoolSize"));
         dataSource.setMaxIdleTime(getIntProperty("connection.pool.maxIdleTime"));
 
+
         return dataSource;
     }
 
@@ -67,6 +68,9 @@ public class AppConfig implements WebMvcConfigurer {
         props.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
         props.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
         props.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+        props.setProperty("hibernate.connection.CharSet", env.getProperty("hibernate.connection.CharSet"));
+        props.setProperty("hibernate.connection.characterEncoding", env.getProperty("hibernate.connection.characterEncoding"));
+        props.setProperty("hibernate.connection.useUnicode", env.getProperty("hibernate.connection.useUnicode"));
 
         return props;
     }
