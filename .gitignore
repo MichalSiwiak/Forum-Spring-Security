@@ -1,6 +1,6 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
-.persistence-mysql.properties
+!.persistence-mysql.properties
 
 ### STS ###
 .apt_generated
