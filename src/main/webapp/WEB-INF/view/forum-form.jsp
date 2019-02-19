@@ -120,27 +120,27 @@
         <div class="pt-0 pb-5">
             <div class="container">
 
-                <div class="row my-3">
-                    <div class="col-md-6">
-                        <h4 class="m-0 p-0">
-                            Welcome: <security:authentication property="principal.username"/>
-                        </h4>
+
+                <security:authorize access="hasAnyRole('USER', 'ADMIN')">
+                    <div class="row my-3">
+                        <div class="col-md-6">
+                            <h4 class="m-0 p-0">
+                                Logged: <security:authentication property="principal.username"/>
+                            </h4>
+                        </div>
+                        <div class="col-md-6">
+                            <form:form action="${pageContext.request.contextPath}/logout" method="post">
+                                <button class="btn text-light mb-4 btn-primary float-right" type="submit">
+                                    <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> &nbsp; LOGOUT
+                                </button>
+                            </form:form>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <form:form action="${pageContext.request.contextPath}/logout" method="post">
-                            <button class="btn text-light mb-4 btn-primary float-right" type="submit">
-                                <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> &nbsp; LOGOUT
-                            </button>
-                        </form:form>
-                    </div>
-                </div>
+                </security:authorize>
 
                 <div class="row my-4">
                     <div class="container p-0">
                         <div><c:url value="/new-topic" var="urlNewTopic" scope="page"/>
-                            <%-- <form action="${urlNewTopic}">
-                                 <input type="submit" value="New topic"/>
-                             </form>--%>
                             <a class="btn text-light mb-4 btn-primary" href="${urlNewTopic}">
                                 <i class="fa fa-plus-square fa-lg" aria-hidden="true"></i> &nbsp; NEW TOPIC</a>
                         </div>

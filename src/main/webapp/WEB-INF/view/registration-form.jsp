@@ -145,8 +145,19 @@
                             <i class="fa fa-envelope text-light" aria-hidden="true"></i>
                           </span>
                                                     </div>
-                                                    <form:input path="userName" type="text" placeholder="username"
+                                                    <form:input path="userName" type="email" placeholder="E-mail ..."
                                                                 class="form-control"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <div class="input-group border-0">
+                                                    <div class="input-group-prepend ">
+                          <span class="input-group-text">
+                            <i class="fa fa-lock fa-lg text-light" aria-hidden="true"></i>
+                          </span>
+                                                    </div>
+                                                    <form:password path="password" placeholder="Password ..."
+                                                                   class="form-control"/>
                                                 </div>
                                             </div>
                                             <div class="form-group mb-3">
@@ -156,8 +167,9 @@
                             <i class="fa fa-lock fa-lg text-light" aria-hidden="true"></i>
                           </span>
                                                     </div>
-                                                    <form:password path="password" placeholder="Password..."
-                                                                   class="form-control"/>
+                                                    <input name="repassword" type="password"
+                                                           placeholder="Repeat password ..."
+                                                           class="form-control">
                                                 </div>
                                             </div>
                                             <button type="submit"

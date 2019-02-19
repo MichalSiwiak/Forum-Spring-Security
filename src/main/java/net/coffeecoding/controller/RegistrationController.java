@@ -5,8 +5,12 @@ import java.util.logging.Logger;
 
 import javax.validation.Valid;
 
+import net.coffeecoding.entity.Users;
+import net.coffeecoding.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
@@ -17,11 +21,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import net.coffeecoding.user.ForumUser;
 
@@ -33,6 +33,11 @@ public class RegistrationController {
 	private UserDetailsManager userDetailsManager;
 	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	private Logger logger = Logger.getLogger(getClass().getName());
+
+	@Autowired
+	private JavaMailSender emailSender;
+	@Autowired
+	private UsersService usersService;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
@@ -50,11 +55,50 @@ public class RegistrationController {
 		
 	}
 
+	@GetMapping("/remind-password")
+	public String remindPasswordGET() {
+		return "remind-password-form";
+	}
+
+
+	@PostMapping("/remind-password")
+	public String remindPasswordPOST(@RequestParam("email") String email, Model model) {
+
+		boolean userExists = doesUserExist(email);
+
+		if (userExists) {
+            Users user = usersService.getUser(email);
+            String newPassword = String.valueOf(user.hashCode());
+			String encodedPassword = passwordEncoder.encode(newPassword);
+			encodedPassword = "{bcrypt}" + encodedPassword;
+			user.setPassword(encodedPassword);
+			usersService.saveUser(user);
+
+			try {
+				SimpleMailMessage message = new SimpleMailMessage();
+				message.setFrom("info@coffeecoding.net");
+				message.setTo(email);
+				message.setSubject("Forum Spring Security");
+				message.setText("Your new password is: " + newPassword);
+				emailSender.send(message);
+			} catch (Exception e) {
+				model.addAttribute("error", "Some error occurred.");
+			}
+			model.addAttribute("success", "The new password has been sent to your email.");
+		} else {
+			model.addAttribute("error", "E-mail is not assigned to any user.");
+		}
+
+
+		return "remind-password-form";
+	}
+
+
 	@PostMapping("/processRegistrationForm")
 	public String processRegistrationForm(
 				@Valid @ModelAttribute("forumUser") ForumUser forumUser,
 				BindingResult theBindingResult, 
-				Model theModel) {
+				Model theModel, @RequestParam("repassword") String repassword) {
 						
 		String userName = forumUser.getUserName();
 		logger.info("Processing registration form for: " + userName);
@@ -77,6 +121,14 @@ public class RegistrationController {
 			
 			return "registration-form";			
 		}
+
+		if (!forumUser.getPassword().equals(repassword)) {
+			theModel.addAttribute("user", new ForumUser());
+			theModel.addAttribute("registrationError", "Passwords must be the same.");
+			logger.warning("Passwords must be the same.");
+			return "registration-form";
+		}
+
 
         String encodedPassword = passwordEncoder.encode(forumUser.getPassword());
         encodedPassword = "{bcrypt}" + encodedPassword;

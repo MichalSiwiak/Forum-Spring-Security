@@ -45,6 +45,13 @@ public class TopicDAOImpl implements TopicDAO {
     }
 
     @Override
+    public void deleteTopic(Topic topic) {
+        // get the current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.delete(topic);
+    }
+
+    @Override
     public void saveTopic(Topic theTopic) {
 
         // get current hibernate session

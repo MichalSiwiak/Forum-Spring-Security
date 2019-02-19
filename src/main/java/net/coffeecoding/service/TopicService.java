@@ -9,6 +9,6 @@ public interface TopicService {
     public List<Topic> getTopics();
 
     public Topic getTopic(int id);
-
+    public void deleteTopic(Topic topic);
     public void saveTopic(Topic theTopic);
 }

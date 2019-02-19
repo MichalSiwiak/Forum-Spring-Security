@@ -125,26 +125,22 @@
                             <div class="card-body text-center rounded bg-dark">
                                 <div class="row mt-5">
                                     <div class="col-md-12">
-                                        <h5 class="mb-4"><b>MEMBER LOGIN</b></h5>
+                                        <h5 class="mb-4">
+                                            Enter email to reset your password:
+                                        </h5>
                                     </div>
-                                    <c:if test="${param.error != null}">
-                                        <div class="alert alert-danger col-xs-offset-1 col-xs-10 w-100 text-light">
-                                            Invalid
-                                            username/password.
-                                        </div>
+                                    <c:if test="${error != null}">
+                                        <div class="alert alert-danger col-xs-offset-1 col-xs-10 w-100 text-light"> ${error} </div>
                                     </c:if>
-                                    <c:if test="${param.logout != null}">
-
-                                        <div class="alert alert-success col-xs-offset-1 col-xs-10 w-100 text-light">
-                                            You have been logged out.
-                                        </div>
-
+                                    <c:if test="${success != null}">
+                                        <div class="alert alert-success col-xs-offset-1 col-xs-10 w-100 text-light"> ${success} </div>
                                     </c:if>
                                 </div>
                                 <div class="row pt-2 mt-0">
-                                    <div class="col bg-dark">
-                                        <form:form action="${pageContext.request.contextPath}/authenticateTheUser"
-                                                   method="POST" autocomplete="off">
+                                    <div class="col">
+                                        <form:form
+                                                action="${pageContext.request.contextPath}/register/remind-password"
+                                                autocomplete="off">
                                             <div class="form-group mb-2">
                                                 <div class="input-group border-0">
                                                     <div class="input-group-prepend">
@@ -152,35 +148,18 @@
                             <i class="fa fa-envelope text-light" aria-hidden="true"></i>
                           </span>
                                                     </div>
-                                                    <input type="email" name="username" class="form-control"
-                                                           placeholder="E-mail ...">
-                                                </div>
-                                            </div>
-                                            <div class="form-group mb-3">
-                                                <div class="input-group border-0">
-                                                    <div class="input-group-prepend ">
-                          <span class="input-group-text">
-                            <i class="fa fa-lock fa-lg text-light" aria-hidden="true"></i>
-                          </span>
-                                                    </div>
-                                                    <input type="password" name="password" class="form-control"
-                                                           placeholder="Password ...">
+                                                    <input name="email" type="email" placeholder="E-mail ..."
+                                                           class="form-control">
                                                 </div>
                                             </div>
                                             <button type="submit"
                                                     class="btn mt-4 mb-3 rounded btn-lg btn-primary text-light w-100">
-                                                Login
+                                                Reset Password
                                             </button>
+                                            <p class="mt-5 mb-0" style=""><a
+                                                    href="${pageContext.request.contextPath}/showLoginPage">Back <i
+                                                    class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i></a></p>
                                         </form:form>
-                                        <p class=""><a
-                                                href="${pageContext.request.contextPath}/register/remind-password">Forgot
-                                            Password?</a></p>
-                                        <br> <br>
-                                        <p class="mt-5 mb-0" style=""><a
-                                                href="${pageContext.request.contextPath}/register/showRegistrationForm">
-                                            Create
-                                            your Account <i
-                                                class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i></a></p>
                                     </div>
                                 </div>
                             </div>

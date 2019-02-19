@@ -30,6 +30,12 @@ public class TopicServiceImpl implements TopicService {
 
     @Override
     @Transactional
+    public void deleteTopic(Topic topic) {
+        topicDAO.deleteTopic(topic);
+    }
+
+    @Override
+    @Transactional
     public void saveTopic(Topic theTopic) {
         topicDAO.saveTopic(theTopic);
     }
