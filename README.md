@@ -17,3 +17,9 @@
                         <h5><b>Front End: </b>HTML, CSS, JSP.</h5>
                         <h5>Each topic and answer is assigned to the user in the database. The database is refreshed
                             once a day at night with sample data.</h5>
+                             <h5>To run application create database from sql script and, git clone
+                                                        https://github.com/MichalSiwiak/Forum-Spring-Security.git,
+                                                        upload and run application using tomcat application server or similar.</h5>
+                                                    <h5>Demo View: <a
+                                                            href="https://coffeecoding.net/forum/demo">https://coffeecoding.net/forum/demo</a>
+                                                    </h5>
