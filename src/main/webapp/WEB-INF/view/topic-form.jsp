@@ -124,7 +124,7 @@
                 <div class="row my-3">
                     <div class="col-md-6">
                         <h4 class="m-0 p-0">
-                            Welcome: <security:authentication property="principal.username"/>
+                            Logged: <security:authentication property="principal.username"/>
                         </h4>
                     </div>
                     <div class="col-md-6">
