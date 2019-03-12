@@ -110,7 +110,10 @@
                 <div class="row">
                     <div class="col-md-0">
                         <h1 class="text-left text-primary">Forum Spring Security</h1>
-                        <p class="lead text-left"></p>
+                        <p class="lead text-left">Forum web implementation using spring mvc, spring security and spring
+                            data.</p>
+                        <p class="lead text-left"><b>To view, add and comment topics you have to log in! Create your account or use test user:
+                            login=test@gmail.com password=test</b> </p>
                     </div>
                 </div>
             </div>

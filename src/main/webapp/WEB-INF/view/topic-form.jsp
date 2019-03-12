@@ -110,7 +110,8 @@
                 <div class="row">
                     <div class="col-md-0">
                         <h1 class="text-left text-primary">Forum Spring Security</h1>
-                        <p class="lead text-left"></p>
+                        <p class="lead text-left">Forum web implementation using spring mvc, spring security and spring
+                            data.</p>
                     </div>
                 </div>
             </div>
